@@ -42,9 +42,10 @@ public class Aims {
 					System.out.println("Title of the DVD:");
 					Scanner scanner = new Scanner(System.in);
 					String String1 = scanner.nextLine();
+					
 					int m = 0;
 					for (int i = 0 ; i < arr.length ; i++) {
-						if (String1 == arr[i].getTitle()) {
+						if (String1.equals(arr[i].getTitle())) {
 							m = 1;
 							System.out.println("Title: " + arr[i].getTitle());
 							System.out.println("Category: " + arr[i].getCategory());
@@ -67,7 +68,7 @@ public class Aims {
 					String String1 = scanner.nextLine();
 					int m = 0;
 					for (int i = 0 ; i < arr.length ; i++) {
-						if (String1 == arr[i].getTitle()) {
+						if (String1.equals(arr[i].getTitle())) {
 							m = 1;
 							anOrder.addDigitalVideoDisc(arr[i]);
 							System.out.println("number of DVDs in the current cart: ");
@@ -110,12 +111,12 @@ public class Aims {
 				
 				int m = 0;
 				for (int i = 0 ; i < arr.length ; i++) {
-					if (String1 == arr[i].getTitle()) {
+					if (String1.equals(arr[i].getTitle())) {
 						m = 1;
-						if (String2 == "add") {
+						if (String2.equals("add")) {
 							anOrder.addDigitalVideoDisc(arr[i]);
 						}
-						if (String2 == "remove") {
+						if (String2.equals("remove")) {
 							anOrder.removeDigitalVideoDisc(arr[i]);
 						}
 						break;

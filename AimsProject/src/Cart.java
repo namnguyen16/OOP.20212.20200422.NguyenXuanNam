@@ -134,7 +134,7 @@ public class Cart {
 			System.out.println("ID or Title");
 			Scanner scanner1 = new Scanner(System.in);
 			String String2 = scanner1.nextLine();
-			if (String2 == "ID") {
+			if (String2.equals("ID")) {
 				Scanner input1 = new Scanner(System.in);
 				int number = input1.nextInt();
 				for (int i = 0 ; i < arr.length ; i++) {
@@ -145,7 +145,7 @@ public class Cart {
 				}
 			}
 			
-			if (String2 == "Title") {
+			if (String2.equals("Title")) {
 				Scanner scanner11 = new Scanner(System.in);
 				String String21 = scanner11.nextLine();
 				for (int i = 0 ; i < arr.length ; i++) {
@@ -161,10 +161,10 @@ public class Cart {
 			System.out.println("By: Title or Cost");
 			Scanner scanner = new Scanner(System.in);
 			String String = scanner.nextLine();
-			if (String == "Title") {
+			if (String.equals("Title")) {
 				System.out.println(sortByTitle(arr));
 			}
-			if (String == "Cost") {
+			if (String.equals("Cost")) {
 				System.out.println(sortByCost(arr));
 			}
 		}
