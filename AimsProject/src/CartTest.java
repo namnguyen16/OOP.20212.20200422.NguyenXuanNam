@@ -11,7 +11,7 @@ public class CartTest {
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		cart.addDigitalVideoDisc(dvd3);
 		
-		cart.print();
+		cart.print(); 
 		
 		DigitalVideoDisc[] sorted = Cart.sortByCost(new DigitalVideoDisc[] {dvd1, dvd2, dvd3});
 		System.out.println("sort by cost: ");
@@ -25,7 +25,10 @@ public class CartTest {
 			System.out.println(sorted[i].toString());
 		}
 		
-		
+		int id = 2;
+		System.out.println(Cart.Search(new DigitalVideoDisc[] {dvd1, dvd2, dvd3}, id ));
+		System.out.println(Cart.Ordered(new DigitalVideoDisc[] {dvd1, dvd2, dvd3}));
 	}
+	
 
 }

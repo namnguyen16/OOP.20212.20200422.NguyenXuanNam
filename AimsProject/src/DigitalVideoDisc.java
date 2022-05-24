@@ -1,9 +1,12 @@
+import java.util.Scanner;
+
 public class DigitalVideoDisc {
 	String title;
 	private String category;
 	private String director;
 	private int length;
-	private float cost;
+	float cost;
+	private int id;
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
 		this.title = title;
@@ -67,7 +70,18 @@ public class DigitalVideoDisc {
 		
 	}
 	private static int nbDigitalVideoDiscs = 0;
+	public void setID(String title){
+		this.title = title;
+	    this.nbDigitalVideoDiscs = nbDigitalVideoDiscs++;
+	    int id = nbDigitalVideoDiscs;
+	}
+	public int getID() {
+		return id;
+	}
 	
+		
+
+		
 
 	
 }
