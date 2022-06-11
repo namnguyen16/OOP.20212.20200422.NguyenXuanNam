@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims;
-
+import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.cart.*;
 import java.util.Scanner;
 public class Aims {
 	public static void main(String[] args) {
@@ -45,9 +46,14 @@ public class Aims {
 					Scanner scanner = new Scanner(System.in);
 					String String1 = scanner.nextLine();
 					
+					
 					int m = 0;
 					for (int i = 0 ; i < arr.length ; i++) {
 						if (String1.equals(arr[i].getTitle())) {
+							if (arr[i] instanceof Playable) {
+								
+							
+							}
 							m = 1;
 							System.out.println("Title: " + arr[i].getTitle());
 							System.out.println("Category: " + arr[i].getCategory());
@@ -72,9 +78,9 @@ public class Aims {
 					for (int i = 0 ; i < arr.length ; i++) {
 						if (String1.equals(arr[i].getTitle())) {
 							m = 1;
-							anOrder.addDigitalVideoDisc(arr[i]);
+							anOrder.addMedia(arr[i]);
 							System.out.println("number of DVDs in the current cart: ");
-							System.out.println(anOrder.arrindex);
+							System.out.println(anOrder.getCountDVD());
 							break;
 						}
 					}
@@ -116,10 +122,10 @@ public class Aims {
 					if (String1.equals(arr[i].getTitle())) {
 						m = 1;
 						if (String2.equals("add")) {
-							anOrder.addDigitalVideoDisc(arr[i]);
+							anOrder.addMedia(arr[i]);
 						}
 						if (String2.equals("remove")) {
-							anOrder.removeDigitalVideoDisc(arr[i]);
+							anOrder.removeMedia(arr[i]);
 						}
 						break;
 					}

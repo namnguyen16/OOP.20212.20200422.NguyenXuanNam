@@ -119,4 +119,33 @@ public class Cart {
 		}
 		return countDVD;
 	}
+	
+	public static void cartM(DigitalVideoDisc[] arr, int k) {
+		if (k == 1) {
+			System.out.println("ID or Title");
+			Scanner scanner1 = new Scanner(System.in);
+			String String2 = scanner1.nextLine();
+			if (String2.equals("ID")) {
+				Scanner input1 = new Scanner(System.in);
+				int number = input1.nextInt();
+				for (int i = 0 ; i < arr.length ; i++) {
+					if (number == arr[i].getId()) {
+						System.out.println(arr[i].getTitle());
+						break;
+					}
+				}
+			}
+			
+			if (String2.equals("Title")) {
+				Scanner scanner11 = new Scanner(System.in);
+				String String21 = scanner11.nextLine();
+				for (int i = 0 ; i < arr.length ; i++) {
+					if (String21 == arr[i].getTitle()) {
+						System.out.println(arr[i].getTitle());
+						break;
+					}
+				}
+			}
+		}
+	}
 }
