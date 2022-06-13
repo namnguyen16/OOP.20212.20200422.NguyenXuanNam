@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.media;
 import java.util.*;
 
-public class Book extends Media {
+public abstract class Book extends Media implements Comparable {
 	
 	private List<String> authors = new ArrayList<String>();
 
@@ -40,6 +40,21 @@ public class Book extends Media {
 		else {
 			System.out.println("That author is not exist!");
 		}
+	}
+
+
+	
+	public String compareTo(Book obj) {
+		if (this.getTitle().compareTo(obj.getTitle())>0) {
+			return this.getTitle();
+		}
+		if (this.getTitle().equals(obj.getTitle())) {
+			if (this.getCategory().compareTo(obj.getCategory())>0) {
+				return this.getTitle();
+			}
+		}
+		return obj.getTitle();
+		
 	}
 
 

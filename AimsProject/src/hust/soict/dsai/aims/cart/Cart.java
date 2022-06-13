@@ -120,7 +120,7 @@ public class Cart {
 		return countDVD;
 	}
 	
-	public static void cartM(DigitalVideoDisc[] arr, int k) {
+	public static void cartM(Media[] arr, int k) {
 		if (k == 1) {
 			System.out.println("ID or Title");
 			Scanner scanner1 = new Scanner(System.in);
@@ -148,4 +148,21 @@ public class Cart {
 			}
 		}
 	}
+	
+	public boolean contains(Media m) {
+		return indexOf(m) >= 0;	
+	}
+	
+	public int indexOf(Object O) {
+		for (Media n: itemsOrdered) {
+			if (O.equals(n)) {
+				return itemsOrdered.indexOf(O);
+			} 
+		}
+		return -1;	
+	}
+	
+	
+	
+	
 }

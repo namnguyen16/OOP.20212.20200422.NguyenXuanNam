@@ -2,7 +2,9 @@ package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
 
-public class CompactDisc extends Disc implements Playable {
+import javax.swing.Spring;
+
+public abstract class CompactDisc extends Disc implements Playable, Comparable {
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
 	
@@ -63,6 +65,24 @@ public class CompactDisc extends Disc implements Playable {
 		}
 	
 	}
+
+	
+	public String compareTo(CompactDisc obj) {
+		if (this.getTitle().compareTo(obj.getTitle())>0) {
+			return this.getTitle();
+		}
+		if (this.getTitle().equals(obj.getTitle())) {
+			if (this.getCategory().compareTo(obj.getCategory())>0) {
+				return this.getTitle();
+			}
+		}
+		return obj.getTitle();
+	
+	
+	}
+	
+	
+
 
 }
 
