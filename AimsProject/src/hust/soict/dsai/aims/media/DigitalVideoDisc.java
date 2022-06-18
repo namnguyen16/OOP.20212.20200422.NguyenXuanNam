@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.media;
 import java.time.LocalDate;
 
-public class DigitalVideoDisc extends Disc implements Playable {
+public abstract class DigitalVideoDisc extends Disc implements Playable,Comparable {
 
 	
 	private String director;
@@ -80,6 +80,19 @@ public class DigitalVideoDisc extends Disc implements Playable {
 			}
 		}
 		return false;
+	}
+
+	public String compareTo(DigitalVideoDisc obj) {
+		if (this.getTitle().compareTo(obj.getTitle())>0) {
+			return this.getTitle();
+		}
+		if (this.getTitle().equals(obj.getTitle())) {
+			if (this.getCategory().compareTo(obj.getCategory())>0) {
+				return this.getTitle();
+			}
+		}
+		return obj.getTitle();
+		
 	}
 }
 	

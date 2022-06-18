@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims;
+import hust.soict.dsai.aims.media.*;
 
+import hust.soict.dsai.aims.cart.*;
 import java.util.Scanner;
 public class Aims {
 	public static void main(String[] args) {
@@ -25,7 +27,6 @@ public class Aims {
 		DigitalVideoDisc[] arr = new DigitalVideoDisc[] {dvd1, dvd2, dvd3};
 		int k1 = 1;
 		while (k1 == 1) {
-			k1 = 0;
 			Store.showMenu();
 			Scanner input = new Scanner(System.in);
 			int number1 = input.nextInt();
@@ -35,70 +36,114 @@ public class Aims {
 			if (number1 == 1) {
 				
 				
-					
-				Store.storeMenu();
-				Scanner input1 = new Scanner(System.in);
-				int number2 = input1.nextInt();
-					
-				if (number2 == 1) {
-					System.out.println("Title of the DVD:");
-					Scanner scanner = new Scanner(System.in);
-					String String1 = scanner.nextLine();
-					
-					int m = 0;
+				int k2 = 1;
+				while (k2 == 1){
 					for (int i = 0 ; i < arr.length ; i++) {
-						if (String1.equals(arr[i].getTitle())) {
-							m = 1;
-							System.out.println("Title: " + arr[i].getTitle());
-							System.out.println("Category: " + arr[i].getCategory());
-							System.out.println("Director: " + arr[i].getDirector());
-							System.out.println("Length: " + String.valueOf(arr[i].getLength()));
-							System.out.println("Cost: " + String.valueOf(arr[i].getCost()));
-							break;
+							if (arr[i] instanceof Playable) {
+								arr[i].play();	
+							}
+					}
+					Store.storeMenu();
+					Scanner input1 = new Scanner(System.in);
+					int number2 = input1.nextInt();
+					
+					if (number2 == 1) {
+						System.out.println("Title of the DVD:");
+						Scanner scanner = new Scanner(System.in);
+						String String1 = scanner.nextLine();
+					
+					
+						int m = 0;
+						for (int i = 0 ; i < arr.length ; i++) {
+							if (String1.equals(arr[i].getTitle())) {
+								m = 1;
+								System.out.println("Title: " + arr[i].getTitle());
+								System.out.println("Category: " + arr[i].getCategory());
+								System.out.println("Cost: " + String.valueOf(arr[i].getCost()));
+								break;
+							}
 						}
-					}
-					if (m == 0) {
-						System.out.println("No DVD is found.");
-					}
+						if (m == 0) {
+							System.out.println("No DVD is found.");
+						}
 					
 						
+					}
+				
+					if (number2 == 2) {
+						System.out.println("Title of the DVD:");
+						Scanner scanner = new Scanner(System.in);
+						String String1 = scanner.nextLine();
+						int m = 0;
+						for (int i = 0 ; i < arr.length ; i++) {
+							if (String1.equals(arr[i].getTitle())) {
+								m = 1;
+								if (anOrder.contains(arr[i])) {
+									System.out.println("The media is already in the list.");
+								}
+								else {
+									anOrder.addMedia(arr[i]);
+								}
+						
+								System.out.println("number of DVDs in the current cart: ");
+								System.out.println(anOrder.getCountDVD());
+								break;
+							}
+						}
+						if (m == 0) {
+							System.out.println("No DVD is found.");
+						}
+						
+					}
+					
+					if (number2 == 3) {
+						int k3 = 1;
+						while (k3 == 1) {
+							for (int i = 0 ; i < arr.length ; i++) {
+								if (arr[i] instanceof Playable) {
+									(arr[i]).play();	
+								}
+							}
+							Store.cartMenu();
+							Scanner input11 = new Scanner(System.in);
+							int number = input11.nextInt();
+							Cart.cartM(arr, number);
+							if (number == 2) {
+								System.out.println("Title or Cost");
+								Scanner scanner1 = new Scanner(System.in);
+								String String2 = scanner1.nextLine();
+								if (String2.equals("Title")) {
+									anOrder.sortByTitle();
+									System.out.println(arr);
+								}
+								if (String2.equals("Cost")) {
+									anOrder.sortByCost();
+									System.out.println(arr);
+								}
+							}
+							if (number == 3) {
+								System.out.println("Title of the DVD:");
+								Scanner scanner = new Scanner(System.in);
+								String String1 = scanner.nextLine();
+								for (int i = 0 ; i < arr.length ; i++) {
+									if (String1.equals(arr[i].getTitle())) {
+										anOrder.removeMedia(arr[i]);
+									}
+								}
+							}
+							if (number == 0) {
+								k3 = 0;
+							}
+						}	
+						
+					}
+					
+					if (number2 == 0) {
+						k2 = 0;
+						
+					}
 				}
 				
-				if (number2 == 2) {
-					System.out.println("Title of the DVD:");
-					Scanner scanner = new Scanner(System.in);
-					String String1 = scanner.nextLine();
-					int m = 0;
-					for (int i = 0 ; i < arr.length ; i++) {
-						if (String1.equals(arr[i].getTitle())) {
-							m = 1;
-							anOrder.addDigitalVideoDisc(arr[i]);
-							System.out.println("number of DVDs in the current cart: ");
-							System.out.println(anOrder.arrindex);
-							break;
-						}
-					}
-					if (m == 0) {
-						System.out.println("No DVD is found.");
-					}
-						
-				}
-					
-				if (number2 == 3) {
-					Store.cartMenu();
-					Scanner input11 = new Scanner(System.in);
-					int number = input11.nextInt();
-					Cart.cartM(arr, number);
-					if (number == 0) {
-						k1 = 1;
-					}
-						
-				}
-					
-				if (number2 == 0) {
-					k1 = 1;
-						
-				}
 			}
 				
 			
@@ -116,10 +161,15 @@ public class Aims {
 					if (String1.equals(arr[i].getTitle())) {
 						m = 1;
 						if (String2.equals("add")) {
-							anOrder.addDigitalVideoDisc(arr[i]);
+							if (anOrder.contains(arr[i])) {
+								System.out.println("The media is already in the list.");
+							}
+							else {
+								anOrder.addMedia(arr[i]);
+							}
 						}
 						if (String2.equals("remove")) {
-							anOrder.removeDigitalVideoDisc(arr[i]);
+							anOrder.removeMedia(arr[i]);
 						}
 						break;
 					}
@@ -130,17 +180,59 @@ public class Aims {
 			}
 			
 			if (number1 == 3) {
-				Store.cartMenu();
-				Scanner input1 = new Scanner(System.in);
-				int number = input1.nextInt();
-				Cart.cartM(arr, number);
-				if (number == 0) {
-					k1 = 1;
+				for (int i = 0 ; i < arr.length ; i++) {
+					if (arr[i] instanceof Playable) {
+						arr[i].play();	
+					}
 				}
+				int k3 = 1;
+				while (k3 == 1) {
+					for (int i = 0 ; i < arr.length ; i++) {
+						if (arr[i] instanceof Playable) {
+							arr[i].play();	
+						}
+					}
+					Store.cartMenu();
+					Scanner input11 = new Scanner(System.in);
+					int number = input11.nextInt();
+					Cart.cartM(arr, number);
+					if (number == 2) {
+						System.out.println("Title or Cost");
+						Scanner scanner1 = new Scanner(System.in);
+						String String2 = scanner1.nextLine();
+						if (String2.equals("Title")) {
+							anOrder.sortByTitle();
+							System.out.println(arr);
+						}
+						if (String2.equals("Cost")) {
+							anOrder.sortByCost();
+							System.out.println(arr);
+						}
+					}
+					if (number == 3) {
+						System.out.println("Title of the DVD:");
+						Scanner scanner = new Scanner(System.in);
+						String String1 = scanner.nextLine();
+						for (int i = 0 ; i < arr.length ; i++) {
+							if (String1.equals(arr[i].getTitle())) {
+								anOrder.removeMedia(arr[i]);
+							}
+						}
+					}
+					if (number == 0) {
+						k3 = 0;
+					}
+				}	
 				
+			}
+			
+			if (number1 == 0) {
+				k1 = 0;
 			}
 			
 			
 		}
 	}
+
+
 }

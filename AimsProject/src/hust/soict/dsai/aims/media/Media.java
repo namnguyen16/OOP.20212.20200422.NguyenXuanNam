@@ -74,6 +74,15 @@ public abstract class Media {
 	public String toString() {
 		return "DVD-"+title+"-"+category+": "+cost;
 	}
+	
+	public boolean equals(Media m) {
+		if ( m.getId() == this.id) {
+			return true;
+		}
+		return false;
+	}
+
+	
 }
 
     
