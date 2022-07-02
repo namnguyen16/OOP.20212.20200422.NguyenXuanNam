@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <left>
+      <Pane onMouseDragged="#drawingAreaMouseDragged" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox fx:id="drawingAreaPane" maxHeight="1.7976931348623157E308" prefHeight="480.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets right="8.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+   <top>
+      <Button mnemonicParsing="false" text="Clear" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
